@@ -10,6 +10,10 @@
 </head>
 <body>
 
-    @yield('body')
+    <div class="container">
+        @component('components.navbar')@endcomponent
+        @yield('body')
+    </div>
+
 </body>
 </html>
