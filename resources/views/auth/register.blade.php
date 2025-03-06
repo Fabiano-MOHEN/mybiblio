@@ -2,7 +2,7 @@
 @extends('layout')
 
 
-@section('title', 'innscription')
+@section('title', 'inscription')
 
 
 @section('body')

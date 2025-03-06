@@ -1,0 +1,24 @@
+@
+@extends('layout')
+@section('title', 'connexion')
+
+@section('body')
+<h1>connexion</h1>
+
+<form action="" method="post">
+    @csrf
+
+@component('components.input',
+    ['name' => 'email', 'label' => 'Votre email', 'value' => old('email'), 'type' => 'email'])
+    @endcomponent
+
+    @component('components.input',
+    ['name' => 'password', 'label' => 'Votre mot de passe', 'value' => old('password'), 'type' => 'password'])
+    @endcomponent
+
+    <button type="submit" class="btn btn-primary">connexion</button>
+</form>
+
+@endsection
+
+

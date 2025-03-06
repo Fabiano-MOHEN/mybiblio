@@ -9,15 +9,25 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/register">Inscription</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-          </li>
+
+
+          @guest
+            <li class="nav-item">
+                <a class="nav-link" href="/register">Inscription</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+            </li>
+          @endguest
+          @auth
+            <li class="nav-item">
+                <form action="{{route('logout')}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-primary">Logout</button>
+                </form>
+            </li>
+          @endauth
         </ul>
       </div>
     </div>
