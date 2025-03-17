@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
+
 
 use App\Http\Controllers\HomeController;
 
@@ -18,6 +20,7 @@ Route::post('/login', [AuthController::class, "handleLogin" ])->name("login.post
 
 Route::delete('/logout', [AuthController::class, "logout" ])->name("logout")->middleware("auth");
 
+Route::resource('books', BookController::class);
 
 
 
