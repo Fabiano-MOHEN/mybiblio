@@ -1,7 +1,11 @@
 @
 @extends('layout')
 @section('title', 'connexion')
-
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 @section('body')
 <h1>connexion</h1>
 
@@ -18,6 +22,9 @@
 
     <button type="submit" class="btn btn-primary">connexion</button>
     <span>Vous n'avez pas de compte ? <a href="/register">Inscrivez-vous</a></span>
+
+  
+
 </form>
 
 @endsection

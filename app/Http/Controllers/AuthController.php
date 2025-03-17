@@ -34,18 +34,22 @@ class AuthController extends Controller
     // show login page
     public function handlelogin(LoginRequest $request)
     {
-
         // Authentication passed...
         $validated = $request->validated();
         $ok = Auth::attempt($validated);
         if ($ok) {
             session()->regenerate();
-            echo'vous etes connecté';
+    
+            
+            session()->flash('success', 'Vous êtes bien connecté!');
+    
+            return redirect()->route('home');
         }
-
-        return redirect()->route('home');
+    
+       
+        return redirect()->route('login')->withErrors(['email' => 'Les informations d\'identification fournies ne correspondent pas à nos enregistrements.']);
     }
-
+    
 
 
     public function logout()
@@ -54,7 +58,7 @@ class AuthController extends Controller
         return redirect()->route('login');
     }
 
-    public function login_message ()
+    
     
 
 }
