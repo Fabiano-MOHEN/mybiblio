@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+
 class AuthController extends Controller
 {
     // show register page
@@ -39,6 +40,7 @@ class AuthController extends Controller
         $ok = Auth::attempt($validated);
         if ($ok) {
             session()->regenerate();
+            echo'vous etes connecté';
         }
 
         return redirect()->route('home');
@@ -51,5 +53,8 @@ class AuthController extends Controller
         Auth::logout();
         return redirect()->route('login');
     }
+
+    public function login_message ()
+    
 
 }

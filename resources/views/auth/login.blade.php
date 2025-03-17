@@ -17,6 +17,7 @@
     @endcomponent
 
     <button type="submit" class="btn btn-primary">connexion</button>
+    <span>Vous n'avez pas de compte ? <a href="/register">Inscrivez-vous</a></span>
 </form>
 
 @endsection
