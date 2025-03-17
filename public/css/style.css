@@ -1,7 +1,7 @@
 .content-container {
     display: flex;
     align-items: center;
-    background-color: #F5F5DC; /* Couleur de fond beige */
+    background-color: #ffe682; /* Couleur de fond beige */
     border-radius: 12px; /* Coins arrondis pour le conteneur */
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour un effet de profondeur */
@@ -24,4 +24,32 @@
     padding: 20px;
     border-radius: 8px; /* Coins arrondis pour le texte */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre pour le texte */
+}
+
+/* Style personnalisé pour la navbar */
+.navbar {
+    background-color: #fcfcfc; /* Couleur de fond de la navbar */
+}
+
+.navbar-brand,
+.nav-link {
+    color: #ecbe04 !important; /* Couleur du texte */
+}
+
+.nav-link:hover {
+    color: #fb1010 !important; /* Couleur du texte au survol */
+}
+
+.navbar-toggler-icon {
+    background-color: #25a9bd; /* Couleur de l'icône du toggler */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Couleur de fond du bouton */
+    border-color: #007bff; /* Couleur de la bordure du bouton */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Couleur de fond du bouton au survol */
+    border-color: #0056b3; /* Couleur de la bordure du bouton au survol */
 }
