@@ -19,6 +19,17 @@
         </p>
     </div>
 </div>
+
+<h2>Les derniers livres ajoutés</h2>
+
+<div class="card" style="width: 18rem;">
+    <img src="https://cdn.beebs.app/fe04b0a9-2724-4fda-8512-471ef882d125.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Livre jules vernes</h5>
+      <p class="card-text">Voici un exemple de teste livre.</p>
+      <a href="#" class="btn btn-primary stretched-link">exemple</a>
+    </div>
+  </div>
 @endsection
 
 
