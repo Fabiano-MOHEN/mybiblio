@@ -2,7 +2,7 @@
 @section('title', 'welcome')
 
 @section('body')
-<h1>welcome</h1>
+<h1>welcome / Bienvenue</h1>
 <div class="content-container">
 <div class="image-container">
     <img src="https://media.istockphoto.com/id/1235240586/fr/photo/bibliothèque-étagères-avec-des-livres-et-des-manuels-concept-dapprentissage-et-déducation.jpg?s=612x612&w=0&k=20&c=Cwf7JgioW3L_ajuOv4vBld_kUupTZsMd8ItYt4PXr6s=" alt="Description de l'image">

@@ -18,13 +18,18 @@
             <li class="nav-item">
                 <a class="nav-link" href="/login">Login</a>
             </li>
+
           @endguest
           @auth
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('books.create')}}">Enregistrement du Livre</a>
+        </li>
             <li class="nav-item">
                 <form action="{{route('logout')}}" method="post">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-primary">Logout</button>
+
                 </form>
             </li>
           @endauth

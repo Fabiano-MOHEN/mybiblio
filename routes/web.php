@@ -20,7 +20,9 @@ Route::post('/login', [AuthController::class, "handleLogin" ])->name("login.post
 
 Route::delete('/logout', [AuthController::class, "logout" ])->name("logout")->middleware("auth");
 
-Route::resource('books', BookController::class);
+//Route::resource('books', BookController::class);
+
+Route::get('/books/create', [BookController::class, "create" ])->name("books.create")->middleware("auth");
 
 
 
