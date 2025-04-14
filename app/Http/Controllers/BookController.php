@@ -10,8 +10,8 @@ class BookController extends Controller
 {
     public function index()
     {
-        $books = Book::all();
-        dd($books);
+        $books = Book::query()->paginate(1);;
+
         return view('books.index', compact('books'));
     }
 
