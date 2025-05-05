@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use App\Http\Requests\RegisterRequest;
 use App\Models\Book;
 use App\Models\Category;
@@ -10,9 +12,21 @@ class BookController extends Controller
 {
     public function index()
     {
-        $books = Book::query()->paginate(1);;
+        $category_id = request()->query('category_id');
+        $search_term = request()->query('search');
+        if ($search_term) {
+            $books = Book::where('title', 'LIKE', "%{$search_term}%")->with('category')->paginate(1);
+        } elseif ($category_id) {
+            $books = Book::where('category_id', $category_id)->with('category')->paginate(1);
+        } else {
+            $books = Book::with('category')->paginate(1);
+        }
 
-        return view('books.index', compact('books'));
+
+
+        $categories = Category::all();
+
+        return view('books.index', compact('books', 'categories'));
     }
 
     public function create()
@@ -46,12 +60,15 @@ class BookController extends Controller
 
     public function show(Book $book)
     {
+        $book->load('category');
         return view('books.show', compact('book'));
     }
 
+
     public function edit(Book $book)
     {
-        return view('books.edit', compact('book'));
+        $categories = Category::all();
+        return view('books.edit', compact('book', 'categories'));
     }
 
     public function update(Request $request, Book $book)
@@ -83,6 +100,13 @@ class BookController extends Controller
 
     public function destroy(Book $book)
     {
+        // Delete the photo if it exists
+        if ($book->photo) {
+            $photoPath = public_path('storage/' . $book->photo);
+            if (file_exists($photoPath)) {
+                unlink($photoPath);
+            }
+        }
         $book->delete();
         return redirect()->route('books.index')->with('success', 'Book deleted successfully.');
     }

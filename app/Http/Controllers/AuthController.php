@@ -39,17 +39,17 @@ class AuthController extends Controller
         $ok = Auth::attempt($validated);
         if ($ok) {
             session()->regenerate();
-    
-            
+
+
             session()->flash('success', 'Vous êtes bien connecté!');
-    
+
             return redirect()->route('home');
         }
-    
-       
+
+
         return redirect()->route('login')->withErrors(['email' => 'Les informations d\'identification fournies ne correspondent pas à nos enregistrements.']);
     }
-    
+
 
 
     public function logout()
@@ -58,7 +58,8 @@ class AuthController extends Controller
         return redirect()->route('login');
     }
 
-    
-    
+
+
+
 
 }

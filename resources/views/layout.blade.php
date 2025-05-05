@@ -13,6 +13,7 @@
 
     <div class="container">
         @component('components.navbar')@endcomponent
+
         @yield('body')
     </div>
 

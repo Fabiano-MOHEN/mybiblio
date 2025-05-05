@@ -1,23 +1,23 @@
 @extends('layout')
-@section('title', 'ajouter un livre')
+@section('title', 'Modifier un livre')
 
 @section('body')
-<form action="{{route('books.store')}}" method="post" enctype="multipart/form-data">
+<form action="{{route('books.update', $book)}}" method="post" enctype="multipart/form-data">
     @csrf
-
-    @component('components.input', ['name' => 'title', 'label' => 'Titre', 'value' => old('title')])
+    @method('PUT')
+    @component('components.input', ['name' => 'title', 'label' => 'Titre', 'value' => $book->title])
     @endcomponent
 
-    @component('components.input', ['name' => 'author', 'label' => 'Auteur', 'value' => old('author')])
+    @component('components.input', ['name' => 'author', 'label' => 'Auteur', 'value' => $book->author])
     @endcomponent
 
-    @component('components.input', ['name' => 'nbpages', 'label' => 'Nombre de pages', 'value' => old('nbpages')])
+    @component('components.input', ['name' => 'nbpages', 'label' => 'Nombre de pages', 'value' => $book->nbpages])
     @endcomponent
 
-    @component('components.input', ['name' => 'resume', 'label' => 'Résumé', 'value' => old('resume')])
+    @component('components.input', ['name' => 'resume', 'label' => 'Résumé', 'value' => $book->resume])
     @endcomponent
 
-    @component('components.input', ['name' => 'price', 'label' => 'Prix', 'value' => old('price')])
+    @component('components.input', ['name' => 'price', 'label' => 'Prix', 'value' => $book->price])
     @endcomponent
 
     <div>
@@ -27,11 +27,11 @@
 
     <select name="category_id" id="category">
         @foreach($categories as $category)
-         <option value="{{$category->id}}">{{$category->name}}</option>
+         <option {{$category->id === $book->category_id ? "selected" : ""}} value="{{$category->id}}">{{$category->name}}</option>
         @endforeach
     </select>
 
-    <button type="submit" class="btn btn-primary">Ajouter le livre</button>
+    <button type="submit" class="btn btn-primary">Modifier le livre</button>
 </form>
 @endsection
 {{-- layout.blade.php
