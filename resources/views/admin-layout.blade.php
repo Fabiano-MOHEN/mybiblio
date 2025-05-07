@@ -12,7 +12,7 @@
 <body>
 
     <div class="container-lg">
-        @component('components.navbar')@endcomponent
+        @component('components.admin-navbar')@endcomponent
 
         @yield('body')
     </div>

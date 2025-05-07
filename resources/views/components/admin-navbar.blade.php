@@ -6,32 +6,16 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Accueil</a>
+            <a class="nav-link active" aria-current="page" href="{{route('admin.index')}}">Acceuil</a>
           </li>
 
-          @guest
-            <li class="nav-item">
-                <a class="nav-link" href="/register">Inscription</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
-            </li>
-
-
-          @endguest
-          @auth
           <li class="nav-item">
-            <a class="nav-link" href="{{route('books.create')}}">Ajouter</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{route('books.index')}}">Bibliotheque</a>
-        </li>
+            <a class="nav-link " aria-current="page" href="{{route('admin.users')}}">Utilisateurs</a>
+          </li>
 
-        @if(auth()->user()->role === 'admin')
-            <li class="nav-item">
-                <a class="nav-link" href="{{route('admin.index')}}">Administration</a>
-            </li>
-        @endif
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="{{route('admin.books')}}">Livres</a>
+          </li>
 
             <li class="nav-item">
                 <form action="{{route('logout')}}" method="post">
@@ -41,7 +25,7 @@
 
                 </form>
             </li>
-          @endauth
+
         </ul>
       </div>
     </div>

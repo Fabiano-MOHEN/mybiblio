@@ -6,9 +6,9 @@
 
 
 @section('body')
-<h1>inscription</h1>
+<h1 style="text-align : center">Inscription</h1>
 
-
+<div class="container" style="width: 70%; justify-content: center;">
 <form action="" method="post">
     @csrf
 
@@ -25,7 +25,9 @@
     @endcomponent
 
 
-    <button type="submit" class="btnn btn-primary">Inscription</button>
+    <button type="submit" class="btn btn-primary">Inscription</button>
 </form>
+
+</div>
 
 @endsection

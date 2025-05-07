@@ -6,7 +6,8 @@
     </div>
 @endif
 @section('body')
-<h1>connexion</h1>
+<h1 style="text-align : center">Connexion</h1>
+<div class="container" style="width: 70%; justify-content: center;">
 
 <form action="" method="post">
     @csrf
@@ -25,6 +26,7 @@
 
 
 </form>
+</div>
 
 @endsection
 

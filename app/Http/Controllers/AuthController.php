@@ -43,6 +43,11 @@ class AuthController extends Controller
 
             session()->flash('success', 'Vous êtes bien connecté!');
 
+            // Check if the user is an admin
+            if (Auth::user()->role === 'admin') {
+                return redirect()->route('admin.index');
+            }
+            // Redirect to the home page or any other page
             return redirect()->route('home');
         }
 

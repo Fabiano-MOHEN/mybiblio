@@ -3,19 +3,9 @@
 
 @section('body')
 <h1>welcome / Bienvenue</h1>
-<aside>
 
-    <form action="{{ route('books.index') }}" method="GET">
-        <input type="text" name="search" value="{{ request('search') }}" placeholder="Search by title ">
-        <button type="submit">Search</button>
-</aside>
-<aside>
-    <h2>Categories</h2>
-    <ul>
-        @foreach($categories as $category)
-            <li><a href="{{ route('books.index', ['category_id' => $category->id]) }}">{{ $category->name }}</a></li>
-        @endforeach
-    </ul>
+
+
 <div class="content-container">
 <div class="image-container">
     <img src="https://media.istockphoto.com/id/1235240586/fr/photo/bibliothèque-étagères-avec-des-livres-et-des-manuels-concept-dapprentissage-et-déducation.jpg?s=612x612&w=0&k=20&c=Cwf7JgioW3L_ajuOv4vBld_kUupTZsMd8ItYt4PXr6s=" alt="Description de l'image">
@@ -35,7 +25,20 @@
 
 
 
-<h2>Les derniers livres ajoutés</h2>
+<h2 class="py-2">Les derniers livres ajoutés</h2>
+<div class="d-flex flex-wrap justify-content-center gap-4">
+    @foreach ($books as $book)
+    <div class="card" style="width: 25rem;">
+        <img src="storage/{{ $book->photo }}" class="card-img-top" alt="...">
+        <div class="card-body">
+
+            <h5 title="{{$book->title}}" class="card-title">{{ Str::limit($book->title, 30) }}</h5>
+            <a href="{{route('books.show', $book)}}" class="btn btn-primary">Detail</a>
+        </div>
+    </div>
+    @endforeach
+</div>
+
 
 
 @endsection

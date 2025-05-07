@@ -2,6 +2,8 @@
 @section('title', 'ajouter un livre')
 
 @section('body')
+
+<h1 class="text-center py-4">Ajouter un livre</h1>
 <form action="{{route('books.store')}}" method="post" enctype="multipart/form-data">
     @csrf
 
@@ -11,49 +13,27 @@
     @component('components.input', ['name' => 'author', 'label' => 'Auteur', 'value' => old('author')])
     @endcomponent
 
-    @component('components.input', ['name' => 'nbpages', 'label' => 'Nombre de pages', 'value' => old('nbpages')])
-    @endcomponent
-
-    @component('components.input', ['name' => 'resume', 'label' => 'Résumé', 'value' => old('resume')])
+    @component('components.input', ['name' => 'nbpages', 'label' => 'Nombre de pages', 'type' => 'number', 'value' => old('nbpages')])
     @endcomponent
 
     @component('components.input', ['name' => 'price', 'label' => 'Prix', 'value' => old('price')])
     @endcomponent
 
-    <div>
-        <label for="photo">Photo de couverture</label>
-        <input type="file" name="photo" id="photo">
-    </div>
+    @component('components.input', ['name' => 'photo', 'label' => 'Photo de couverture', 'type' => 'file', 'value' => old('photo')])
+    @endcomponent
 
-    <select name="category_id" id="category">
+    @component('components.input', ['name' => 'resume', 'label' => 'Résumé', 'type' => 'textarea',  'value' => old('resume')])
+    @endcomponent
+
+ <div class="form-group">
+    <label for="category">Catégorie</label>
+    <select class="form-select" name="category_id" id="category">
         @foreach($categories as $category)
          <option value="{{$category->id}}">{{$category->name}}</option>
         @endforeach
     </select>
+ </div>
 
-    <button type="submit" class="btn btn-primary">Ajouter le livre</button>
+    <button type="submit" class="btn btn-primary my-2">Ajouter le livre</button>
 </form>
 @endsection
-{{-- layout.blade.php
-<h1>{{ $book->title }}</h1>
-<p>{{ $book->description }}</p>
-<p>Auteur: {{ $book->author->name }}</p>
-<h2>Livres similaires</h2>
-@foreach($relatedBooks as $relatedBook)
-    <a href="{{ url('/books/' . $relatedBook->id) }}">{{ $relatedBook->title }}</a>
-@endforeach
-
-<form action="{{ url('/books/' . $book->id) }}" method="POST">
-    @csrf
-    @method('PUT')
-    <input type="text" name="title" value="{{ $book->title }}" required>
-    <textarea name="description" required>{{ $book->description }}</textarea>
-    <button type="submit">Mettre à jour</button>
-</form>
-
-<form action="{{ url('/books/' . $book->id) }}" method="POST">
-    @csrf
-    @method('DELETE')
-    <button type="submit">Supprimer</button>
-</form>
- --}}
