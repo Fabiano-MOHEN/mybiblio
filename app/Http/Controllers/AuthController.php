@@ -21,8 +21,10 @@ class AuthController extends Controller
     public function handleRegister(RegisterRequest $request)
     {
 
-        User::create($request->validated());
-        return redirect()->route('login');
+        $user = User::query()->create($request->validated());
+        // create a profile for the user
+        $user->profile()->create([]);
+        return redirect()->route('login')->with('success', 'Votre compte a été créé avec succès! Vous pouvez maintenant vous connecter.');
     }
 
 
@@ -41,14 +43,12 @@ class AuthController extends Controller
             session()->regenerate();
 
 
-            session()->flash('success', 'Vous êtes bien connecté!');
-
             // Check if the user is an admin
             if (Auth::user()->role === 'admin') {
-                return redirect()->route('admin.index');
+                return redirect()->route('admin.index')->with('success', 'Bienvenue Admin!');
             }
             // Redirect to the home page or any other page
-            return redirect()->route('home');
+            return redirect()->route('home')->with('success', 'Vous êtes connecté avec succès!');
         }
 
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\BookController;
 
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', [HomeController::class, "index"])->name("home");
 
@@ -50,4 +51,15 @@ Route::get('/admin/books/{book}/edit', [AdminController::class, 'edit_books'])->
 Route::put('/admin/books/{book}', [AdminController::class, 'update_books'])->name('admin.books.update')->middleware("auth", "admin:admin");
 Route::delete('/admin/books/{book}', [AdminController::class, 'destroy_books'])->name('admin.books.destroy')->middleware("auth", "admin:admin");
 Route::get('/admin/books/{book}', [AdminController::class, 'show_books'])->name('admin.books.show')->middleware("auth", "admin:admin");
+
+
+
+// *** PROFILE ROUTES ***
+Route::get('/profile', [ProfileController::class, "index"])->name("profile.index")->middleware("auth");
+
+// profile.update_bio
+Route::put('/profile/update_bio', [ProfileController::class, "update_bio"])->name("profile.update_bio")->middleware("auth");
+// profile.update_image
+Route::put('/profile/update_image', [ProfileController::class, "update_image"])->name("profile.update_image")->middleware("auth");
+
 

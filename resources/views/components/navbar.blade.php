@@ -26,6 +26,9 @@
         <li class="nav-item">
             <a class="nav-link" href="{{route('books.index')}}">Bibliotheque</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('profile.index')}}">Profile</a>
+        </li>
 
         @if(auth()->user()->role === 'admin')
             <li class="nav-item">

@@ -14,11 +14,15 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-        User::query()->create([
+        $admin = User::query()->create([
             'name' => 'admin admin',
             'email' => 'admin@admin.fr',
             'password' => bcrypt('password'),
             'role' => 'admin',
+        ]);
+
+        $admin->profile()->create([
+            'bio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         ]);
     }
 }

@@ -14,6 +14,13 @@
     <div class="container-lg">
         @component('components.navbar')@endcomponent
 
+        @if (session('success'))
+            @component('components.flash', ['type' => 'success', 'value' => session('success')])@endcomponent
+        @endif
+        @if (session('error'))
+            @component('components.flash', ['type' => 'danger', 'value' => session('error')])@endcomponent
+        @endif
+        
         @yield('body')
     </div>
 
